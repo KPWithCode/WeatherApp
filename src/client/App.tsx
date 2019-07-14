@@ -7,11 +7,13 @@ export interface AppProps { }
 const App: React.SFC<AppProps> = () => {
 
     return (
+     
         <BrowserRouter>
             <Router>
-                    <Switch>
+           
+                <Switch>
                             <Route exact path="/" component={Weather} />  
-                    </Switch>
+                </Switch>  
             </Router>
         </BrowserRouter>
 
