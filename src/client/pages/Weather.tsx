@@ -15,9 +15,11 @@ const Weather = () => {
             <div>
                 <Banner />
             </div>
-            <div className="d-flex justify-content-center">
+            <div style={{marginTop:'20%'}}>
                 <Form />
             </div>
+
+            {/* DISPLAY ZIP */}
         </div>
 
     )

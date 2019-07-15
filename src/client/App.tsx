@@ -7,7 +7,8 @@ export interface AppProps { }
 const App: React.SFC<AppProps> = () => {
 
     return (
-     
+        <div style={{textAlign:'center'}}>
+
         <BrowserRouter>
             <Router>
            
@@ -16,6 +17,7 @@ const App: React.SFC<AppProps> = () => {
                 </Switch>  
             </Router>
         </BrowserRouter>
+        </div>
 
     )
 }
