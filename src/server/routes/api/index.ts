@@ -2,8 +2,8 @@ import * as express from 'express';
 
 import weatherRouter from './weather';
 
-const apiRouter = express.Router();
+const router = express.Router();
 
-apiRouter.use('/weather', weatherRouter);
+router.use('/weather', weatherRouter);
 
-export default apiRouter;
+export default router;
