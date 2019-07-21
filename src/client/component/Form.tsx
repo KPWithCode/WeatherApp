@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 
+
+
 export interface Zip {
 
 }
@@ -9,20 +11,22 @@ const Form = () => {
 
   const [zip, setZip] = useState<number>()
 
+  const apiKey = process.env.WEATHER_API
 
 useEffect(() => {
   const zip = async () => {
     try {
-      const api_call = await fetch(`api/weather/${setZip}`);
-      const zip = await api_call.json();
-      setZip(zip)
+
+      const apiCall = await fetch(`https://api.openweathermap.org/data/2.5/forecast?zip=${setZip},us&appid=${apiKey}`);
+      const data = await apiCall.json();
+      setZip(data)
     } catch (e) {
       console.log(e)
     }
   }
 },[])
 
-const onChange = (e: React.ChangeEvent<HTMLInputElement>) => setZip(e.target.valueAsNumber)
+const onChange = (e: React.ChangeEvent<HTMLInputElement>) => setZip(zip)
 
 
 
@@ -35,14 +39,14 @@ const onChange = (e: React.ChangeEvent<HTMLInputElement>) => setZip(e.target.val
      
 
       <form style={{ position: 'relative' }}>
-        <input className="d-flex justify-content-center  form-control " min={5} max={5}
+        <input className="d-flex justify-content-center  form-control " min={5} 
           style={{ width: '40%', height: '5%' }} type="number" placeholder="Enter Zip Code"
           onChange={onChange}>
           </input>
 
-        <button style={{ height: '5%', width: '10%' }} type="submit" className="btn btn-primary">Submit</button>
+        <button onClick={() => setZip(zip)} style={{ height: '5%', width: '10%' }} type="submit" className="btn btn-primary">Submit</button>
         <br />
-        <small style={{ color: '#CFB5B5' }} id="emailHelp" className="form-text text-muted">TRY IT OUT.</small>
+        <small style={{ color: '#CFB5B5' }} className="form-text text-muted">TRY IT OUT.</small>
 
       </form>
 
@@ -50,7 +54,7 @@ const onChange = (e: React.ChangeEvent<HTMLInputElement>) => setZip(e.target.val
 
       <div className="mt-5">
      {/* Zip */}
-      <h3>Hi</h3>
+      <h3 style={{fontSize:'120px',color:'#CFB5B5'}}>{zip + ' ° F'}</h3>
 
 
       </div>
