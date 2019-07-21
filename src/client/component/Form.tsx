@@ -17,7 +17,7 @@ useEffect(() => {
   const zip = async () => {
     try {
 
-      const apiCall = await fetch(`https://api.openweathermap.org/data/2.5/forecast?zip=${setZip},us&appid=${apiKey}`);
+      const apiCall = await fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zip},us`);
       const data = await apiCall.json();
       setZip(data)
     } catch (e) {
